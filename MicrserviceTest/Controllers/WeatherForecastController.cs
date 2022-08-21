@@ -18,7 +18,7 @@ namespace MicrserviceTest.Controllers
         {
             _logger = logger;
         }
-        [Authorize(Policy = "PublicSecure")]
+        [Authorize(Policy =  "UserSecure")]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {

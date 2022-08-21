@@ -1,5 +1,6 @@
 
 using Ids4;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,7 @@ builder.Services.AddIdentityServer()
              options.TokenCleanupInterval = 30; // interval in seconds
          })
          .AddInMemoryApiResources(Config.GetApiResources())
-         .AddInMemoryClients(Config.GetClients()).AddInMemoryApiScopes(Config.ApiScopes());
+         .AddInMemoryClients(Config.GetClients()).AddInMemoryApiScopes(Config.ApiScopes()).AddTestUsers(Config.GetUsers()).AddProfileService<ProfileService>();
 
 builder.Services.AddControllersWithViews();
 
